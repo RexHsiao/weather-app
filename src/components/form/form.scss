@@ -1,0 +1,27 @@
+@import '../../style.scss';
+
+.form{
+    width: 354px;
+    input, button{
+        // padding: 2%;
+        border-radius: 10px;
+        border: none;
+        font-size:16px;
+        font-weight: bold;
+        height: 60px;
+        width: 350px;
+        font-size: 25px; 
+    }
+
+    input{
+        margin-bottom: 15px;
+    }
+    button{
+        width: 354px;
+        background-image: $gradient-lightPurple;
+        color:white;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}

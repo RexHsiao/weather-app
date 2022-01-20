@@ -1,0 +1,56 @@
+@import '../../style.scss';
+.deg {
+    font-size: 60px;
+    margin:0;
+    font-weight: 300;
+    margin-top: 15px;
+}
+.status {
+    font-size: 20px;
+    margin:0;
+    font-weight: 300;
+    margin-top: 5px;
+}
+.maxMinDeg {
+    justify-content: space-between;
+    padding: 10%;
+    margin-top: 15px;
+    >div>div{
+        width: 100px;
+        display: flex;
+        justify-content: center;
+        &.degree{
+            font-size: 35px;
+            font-weight: 300;
+            margin-top: 5px;
+        }   
+    }
+    .minDeg {
+        .arrow-down {
+            width: 0; 
+            height: 0; 
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            
+            border-top: 10px solid $primary;
+        }
+        div:last-child{
+            color: $primary;
+        }
+    }
+    .maxDeg {
+        .arrow-up {
+            width: 0; 
+            height: 0; 
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            
+            border-bottom: 10px solid $red;
+        }
+        div:last-child{
+            color: $red;
+        }
+    }
+}
+
+

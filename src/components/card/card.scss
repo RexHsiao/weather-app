@@ -1,0 +1,67 @@
+@import '../../style.scss';
+
+.card {
+    height: 700px;
+    width: 400px;
+    min-width: 400px;
+    border-radius:15px;
+    margin-right: 65px;
+    background-color: white;
+    box-shadow: 0 4px 12px 0 rgba(39, 39, 39, 0.2);
+    &:first-child {
+        margin-left:3%;
+    }
+    >div{
+        display: flex;
+        justify-content: center;
+    }
+    
+    .maxMinDeg {
+        justify-content: space-between;
+        padding: 10%;
+        margin-top: 15px;
+        >div>div{
+            // border: 1px solid #fff;
+            width: 100px;
+            display: flex;
+            justify-content: center;
+            &.degree{
+                font-size: 35px;
+                font-weight: 300;
+                margin-top: 5px;
+            }   
+        }
+        .minDeg {
+            .arrow-down {
+                width: 0; 
+                height: 0; 
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                
+                border-top: 10px solid $primary;
+            }
+            div:last-child{
+                color: $primary;
+            }
+        }
+        .maxDeg {
+            .arrow-up {
+                width: 0; 
+                height: 0; 
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                
+                border-bottom: 10px solid $red;
+            }
+            div:last-child{
+                color: $red;
+            }
+        }
+    }
+}
+
+.card-dark{
+    background-image: $gradient-dark;
+    color: white;
+}
+
