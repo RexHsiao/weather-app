@@ -13,10 +13,9 @@ import Error from '../../components/error';
 
 import useForecast from '../../hooks/UseForecast';
 
-const HomePage = () => {
+const HomePage = ({handleToggle, toggle}) => {
     const { isError, isLoading, forecast, submitRequest, submitRequests } = useForecast();
     const [locations, setLocations] = useState(CITIES);
-    const mode = 'dark';
     
     const [forecasts, setForecasts] = useState( async () => {
         const cities = [];
@@ -28,11 +27,18 @@ const HomePage = () => {
     return (
         <Page 
             page="home"
-            mode={mode}
+            handleToggle={handleToggle}
+            toggle={toggle}
             info="TODAY"
         >
-            <HomeBackground mode={mode}>
-                {!isLoading && <Directory mode={mode} locations={locations} forecasts={forecasts}/>}
+            <HomeBackground toggle={toggle}>
+                {!isLoading && 
+                    <Directory 
+                        toggle={toggle}
+                        locations={locations} 
+                        forecasts={forecasts}
+                    />
+                }
                 {isLoading && <Loader />}
                 {isError && <Error message={isError} />}
             </HomeBackground>

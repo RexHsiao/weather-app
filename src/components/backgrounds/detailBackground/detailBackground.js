@@ -1,8 +1,8 @@
 import React from 'react';
 import './detailBackground.scss';
 
-const DetailBackground = ({children, mode}) => (
-    <div className={`detailBackground ${mode}`}>
+const DetailBackground = ({children, toggle}) => (
+    <div className={`detailBackground detailBackground-${toggle?'dark':''}`}>
         <div className="background">
             <div className="circle" id="C1"></div>
             <div className="circle" id="C2"></div>

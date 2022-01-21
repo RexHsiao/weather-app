@@ -8,22 +8,16 @@ import Directory from '../directory';
 
 
 
-const Page = ({children, page, mode, info, handleToggle, cities}) => {
+const Page = ({children, page, mode, info, handleToggle, toggle, cities}) => {
     const isOn = mode === 'dark';
     return (
         <div className="page">
             <NavBar 
                 mode={mode}
                 info={info}
-                isOn={isOn} 
+                toggle={toggle} 
                 handleToggle={handleToggle}
             />
-            {/* <Error /> */}
-            {/* <Loader /> */}
-            {/* <DetailForecast /> */}
-            {/* {page === 'home' && 
-                (<HomeBackground mode={mode}><Directory mode={mode} cities={cities}/></HomeBackground>)
-            } */}
             {children}
         </div>
     );

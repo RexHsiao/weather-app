@@ -1,8 +1,8 @@
 import React from 'react';
 import './board.scss';
 
-const Board = ({children}) => (
-    <div className="board">
+const Board = ({children, toggle}) => (
+    <div className={`board board-${toggle?'dark':''}`}>
         {children}
     </div> 
 );

@@ -1,8 +1,10 @@
 import React from 'react';
 import './currentDayForecast.scss';
-
+import Card from '../card';
+import { withRouter } from 'react-router-dom';
 
 const CurrentDayForecast = ({
+    toggle,
     location, 
     temperature, 
     weatherIcon,
@@ -10,10 +12,10 @@ const CurrentDayForecast = ({
     max_temp,
     min_temp}) => {
     return (
-        <>
+        <Card toggle={toggle} id={location}>
             <div><h3>{location}</h3></div>
             <div className="status-img">
-                <img width="150" src={weatherIcon} alt="" />
+                <img width="200" src={weatherIcon} alt="" />
             </div>
             <div className="deg">
                 {temperature}
@@ -33,7 +35,7 @@ const CurrentDayForecast = ({
                     <div>Max</div>
                 </div>
             </div>
-        </>
+        </Card>
     );
 };
 

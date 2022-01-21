@@ -2,9 +2,9 @@ import React from 'react';
 import './card.scss';
 
 
-const Card = ({mode, children}) => {
+const Card = ({toggle, id, children}) => {
     return (
-        <div className={`card card-${mode}`}>
+        <div id={id} className={`card card-${toggle?'dark':''}`}>
             {children}
         </div>
     );

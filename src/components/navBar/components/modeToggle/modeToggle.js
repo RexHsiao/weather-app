@@ -1,20 +1,20 @@
 import React from 'react';
 import './modeToggle.scss';
 
-const ModeToggle = ({ isOn, handleToggle }) => {
+const ModeToggle = ({ handleToggle, toggle }) => {
     return (
         <div className="modeToggle">
             <span>LIGHT</span>
             
             <input
-                checked={isOn}
+                checked={toggle}
                 onChange={handleToggle}
                 className="react-switch-checkbox"
                 id={`react-switch-new`}
                 type="checkbox"
             />
             <label
-                style={{ background: isOn && '#FF0070'}}
+                style={{ background: toggle && '#FF0070'}}
                 className="react-switch-label"
                 htmlFor={`react-switch-new`}
             >

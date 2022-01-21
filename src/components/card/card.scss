@@ -8,8 +8,13 @@
     margin-right: 65px;
     background-color: white;
     box-shadow: 0 4px 12px 0 rgba(39, 39, 39, 0.2);
+    color: #444444;
     &:first-child {
         margin-left:3%;
+    }
+    &:hover {
+        position:relative;
+        top:-5px;
     }
     >div{
         display: flex;

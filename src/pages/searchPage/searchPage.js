@@ -11,7 +11,7 @@ import Error from '../../components/error';
 import useForecast from '../../hooks/UseForecast';
 
 
-const SearchPage = () => {
+const SearchPage = ({handleToggle, toggle}) => {
     const { isError, isLoading, forecast, submitRequest } = useForecast();
 
     const onSubmit = (value) => {
@@ -21,12 +21,13 @@ const SearchPage = () => {
     return (
         <Page
             page="search"
-            mode="dark"
+            handleToggle={handleToggle}
+            toggle={toggle}
             info="SEARCH"
         >
-            <DetailBackground mode="dark">
-                <Board>
-                    {!isLoading && <Form submitSearch={onSubmit}/>}
+            <DetailBackground toggle={toggle}>
+                <Board toggle={toggle}>
+                    {!isLoading && <Form submitSearch={onSubmit} toggle={toggle}/>}
                     {isLoading && <Loader />}
                     {isError && <Error message={isError} />}
                 </Board>

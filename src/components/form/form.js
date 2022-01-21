@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './form.scss';
 
-const Form = ({submitSearch}) => {
+const Form = ({submitSearch, toggle}) => {
     const [ location, setLocation ] = useState('');
     const onSubmit = (e) => {
         e.preventDefault();
@@ -21,9 +21,9 @@ const Form = ({submitSearch}) => {
                     value={location}
                     onChange={e => setLocation(e.target.value)}
                 />
-                <button
+                <button 
                     type="submit" 
-                    className="button"
+                    className={`button button-${toggle?'dark':''}`}
                     onClick={onSubmit}
                 >
                     SEARCH

@@ -2,7 +2,7 @@
 
 .form{
     width: 354px;
-    input, button{
+    .input, .button{
         // padding: 2%;
         border-radius: 10px;
         border: none;
@@ -13,15 +13,18 @@
         font-size: 25px; 
     }
 
-    input{
+    .input{
         margin-bottom: 15px;
     }
-    button{
+    .button{
         width: 354px;
-        background-image: $gradient-lightPurple;
+        background-image: $gradient-blue;
         color:white;
         &:hover{
             cursor: pointer;
         }
+    }
+    .button-dark{
+        background-image:$gradient-lightPurple;
     }
 }

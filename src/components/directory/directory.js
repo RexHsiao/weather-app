@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import { Link } from 'react-router-dom';
+
 import './directory.scss';
 import PropTypes from 'prop-types';
 import Card from '../card';
@@ -6,7 +8,7 @@ import CurrentDayForecast from '../currentDayForecast';
 import Add from '../add';
 
 
-const Directory = ({mode, locations, forecasts, onClick}) => {
+const Directory = ({toggle, locations, forecasts, onClick}) => {
     
     const [newForecasts, setNewForecasts] = useState();
     forecasts.then( value => { setNewForecasts(value)});
@@ -14,14 +16,16 @@ const Directory = ({mode, locations, forecasts, onClick}) => {
     return (
         <div className="directory">
             {newForecasts?.map(({currentDay}) => (
-                <Card mode={mode} key={currentDay.location}>
+                    <Link to={`forecast/${currentDay.location}`}>
                     <CurrentDayForecast 
-                        {...currentDay}
+                        {...currentDay} 
+                        key={currentDay.location}
+                        toggle={toggle}
                     />
-                </Card>
+                    </Link>
             ))}
-            <Card mode={mode}>
-                <Add onClick={onClick}/>
+            <Card toggle={toggle}>
+                <Add />
             </Card>
         </div>
     );
