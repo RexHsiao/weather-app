@@ -12,7 +12,9 @@ const CurrentDayForecast = ({
     return (
         <>
             <div><h3>{location}</h3></div>
-            <img width="45" src={weatherIcon} alt="" />
+            <div className="status-img">
+                <img width="150" src={weatherIcon} alt="" />
+            </div>
             <div className="deg">
                 {temperature}
             </div>

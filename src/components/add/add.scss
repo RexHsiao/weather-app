@@ -1,0 +1,22 @@
+@import '../../style.scss';
+
+.add-container{
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    position: relative;
+
+    >div{
+        border-radius:15px;
+        position: absolute;
+        background-image: $gradient-blue;
+    }
+    .vertical{
+        height: 100px;
+        width: 15px;
+    }
+    .horizontal{
+        width: 100px;
+        height: 15px;
+    }
+}

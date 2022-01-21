@@ -14,12 +14,16 @@
     >div{
         display: flex;
         justify-content: center;
+        h3{
+            font-size:32px;
+            font-weight: 300;
+        }
     }
     
     .maxMinDeg {
         justify-content: space-between;
         padding: 10%;
-        margin-top: 15px;
+        margin-top: 20px;
         >div>div{
             // border: 1px solid #fff;
             width: 100px;

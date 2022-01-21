@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect } from 'react';
 import axios from 'axios';
 
 import getCurrentDayDetails from '../helpers/getCurrentDayDetails';
@@ -13,7 +13,8 @@ const UseForecast = () => {
     const [isError, setError] = useState(false);
     const [isLoading, setLoading] = useState(false);
     const [forecast, setForecast] = useState(null);
-    const [forecasts, setForecasts] = useState([]);
+    const [forecasts, setForecasts] = useState(null);
+
 
     const getWoeid = async (location) => {
         const {data} = await axios(`${REQUEST_URL}/search`, {params: { query: location}});
@@ -24,7 +25,7 @@ const UseForecast = () => {
             return;
         }
 
-        return data;
+        return data[0];
     }
 
     const getForecastData = async (woeid) => {
@@ -56,14 +57,30 @@ const UseForecast = () => {
         return {currentDay, currentDayDetails, upcomingDays};
     }
 
+    const getForecastsArray = async (locations) => {
+        const newForecasts = [];
+
+        for (const location of locations) {
+            const response = await getWoeid(location);
+            if (!response?.woeid) return;
+            const data = await getForecastData(response.woeid);
+            if (data.title === location) {
+                const cityForecast = await gatherForecastsData(data);
+                newForecasts.push(cityForecast);
+            }
+        }
+
+        return newForecasts;
+    }
+
     //call the api
     const submitRequest = async (location) => {
         setLoading(true);
         setError(false);
         const response = await getWoeid(location);
         if (!response?.woeid) return;
-
-        const data = await getForecastData(response[0].woeid);
+        
+        const data = await getForecastData(response.woeid);
         if (!data) return;
 
         gatherForecastData(data);
@@ -72,22 +89,15 @@ const UseForecast = () => {
     const submitRequests = async (locations) => {
         setLoading(true);
         setError(false);
-        
-        for (const location of locations) {
-            const response = await getWoeid(location);
-            // if (!response?.woeid) continue;
-            const data = await getForecastData(response[0].woeid);
-            console.log(data.title) ;
-            // gatherForecastsData(data);
-            // console.log(forecast);
-        }
 
+        const newForecasts = await getForecastsArray(locations);
+        setLoading(false);
         
-        // console.log(woeids);
+        return await Promise.all(newForecasts);
     }
 
     return {
-        isError, isLoading, forecast, forecasts, submitRequest, submitRequests
+        isError, isLoading, forecast, submitRequest, submitRequests
     }
 };
 
