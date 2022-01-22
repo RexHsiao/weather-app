@@ -1,0 +1,11 @@
+
+.upcoming-box{
+    border: 1px solid #fff;
+    height: 50%;
+    .weekList{
+        display: flex;
+        justify-content: space-between;
+        padding-right: 5%;padding-left: 5%;
+        padding-top: 5%;
+    }
+}

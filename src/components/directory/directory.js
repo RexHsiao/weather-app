@@ -8,7 +8,7 @@ import CurrentDayForecast from '../currentDayForecast';
 import Add from '../add';
 
 
-const Directory = ({toggle, locations, forecasts, onClick}) => {
+const Directory = ({toggle, searchSetting, forecasts, submitSearch}) => {
     
     const [newForecasts, setNewForecasts] = useState();
     forecasts.then( value => { setNewForecasts(value)});
@@ -16,15 +16,14 @@ const Directory = ({toggle, locations, forecasts, onClick}) => {
     return (
         <div className="directory">
             {newForecasts?.map(({currentDay}) => (
-                    <Link to={`forecast/${currentDay.location}`}>
                     <CurrentDayForecast 
                         {...currentDay} 
                         key={currentDay.location}
                         toggle={toggle}
+                        submitSearch={submitSearch}
                     />
-                    </Link>
             ))}
-            <Card toggle={toggle}>
+            <Card toggle={toggle} searchSetting={searchSetting}>
                 <Add />
             </Card>
         </div>

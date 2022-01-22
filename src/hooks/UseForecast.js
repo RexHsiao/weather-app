@@ -13,7 +13,6 @@ const UseForecast = () => {
     const [isError, setError] = useState(false);
     const [isLoading, setLoading] = useState(false);
     const [forecast, setForecast] = useState(null);
-    const [forecasts, setForecasts] = useState(null);
 
 
     const getWoeid = async (location) => {
@@ -51,10 +50,8 @@ const UseForecast = () => {
 
     const gatherForecastsData = async (data) => {
         const currentDay = getCurrentDayForecast(data.consolidated_weather[0], data.title);
-        const currentDayDetails = getCurrentDayDetails(data.consolidated_weather[0]);
-        const upcomingDays = getUpcomingForecast(data.consolidated_weather);
 
-        return {currentDay, currentDayDetails, upcomingDays};
+        return {currentDay};
     }
 
     const getForecastsArray = async (locations) => {

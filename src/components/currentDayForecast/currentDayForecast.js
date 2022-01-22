@@ -5,6 +5,8 @@ import { withRouter } from 'react-router-dom';
 
 const CurrentDayForecast = ({
     toggle,
+    submitSearch,
+    date,
     location, 
     temperature, 
     weatherIcon,
@@ -12,7 +14,7 @@ const CurrentDayForecast = ({
     max_temp,
     min_temp}) => {
     return (
-        <Card toggle={toggle} id={location}>
+        <Card toggle={toggle} id={location} submitSearch={submitSearch} date={date}>
             <div><h3>{location}</h3></div>
             <div className="status-img">
                 <img width="200" src={weatherIcon} alt="" />

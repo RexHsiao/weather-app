@@ -1,7 +1,8 @@
+@import '../../../style.scss';
 $gradient:linear-gradient(#00057A, #721C87);
 
 .homeBackground {
-    background-color: white;
+    background-image: $gradient-green;
     width: 100%;
     height: 93vh;
     display: flex;
@@ -11,6 +12,6 @@ $gradient:linear-gradient(#00057A, #721C87);
 }
 
 .homeBackground-dark{
-    background-image: $gradient;
+    background-image: $gradient-dark;
     color: white;
 }
