@@ -4,7 +4,7 @@ import './modeToggle.scss';
 const ModeToggle = ({ handleToggle, toggle }) => {
     return (
         <div className="modeToggle">
-            <span>LIGHT</span>
+            <span className="toggle-tag">LIGHT</span>
             
             <input
                 checked={toggle}
@@ -21,7 +21,7 @@ const ModeToggle = ({ handleToggle, toggle }) => {
                 <span className={`react-switch-button`} />
             </label>
             
-            <span>DARK</span>
+            <span className="toggle-tag">DARK</span>
         </div>
       );
 }

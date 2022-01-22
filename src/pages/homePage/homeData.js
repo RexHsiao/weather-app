@@ -14,6 +14,10 @@ const CITIES = [
     {
         id: 4,
         title: "London"
+    },
+    {
+        id: 5,
+        title: "Taipei"
     }
 ]
 

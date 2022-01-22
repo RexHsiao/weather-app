@@ -1,27 +1,27 @@
 @import '../../style.scss';
 
 .form{
-    width: 354px;
+    width: 304px;
     height: 136px;
     position: relative;
     top: 50%;
     transform: translateY(-50%);
     .input, .button{
-        // padding: 2%;
         border-radius: 10px;
         border: none;
         font-size:16px;
-        font-weight: bold;
         height: 60px;
-        width: 350px;
+        width: 300px;
         font-size: 25px; 
+        border: none;
     }
 
     .input{
-        margin-bottom: 15px;
+        margin-bottom: 20px;
+        text-align: center;
     }
     .button{
-        width: 354px;
+        width: 304px;
         background-image: $gradient-blue;
         color:white;
         &:hover{

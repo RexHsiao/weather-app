@@ -8,7 +8,8 @@ a {
     display: flex;
     align-items: center;
     overflow-x: scroll;
-    
+    justify-content:space-between;
+    padding: 2.5%;
     .remover-container{
         position: relative;
     }

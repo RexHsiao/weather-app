@@ -1,10 +1,5 @@
 const getCurrentDayDetails = data => [
     {
-        name: 'predictability',
-        value: data.predictability,
-        unit: '%',
-    },
-    {
         name: 'humidity',
         value: data.humidity,
         unit: '%',
@@ -13,11 +8,6 @@ const getCurrentDayDetails = data => [
         name: 'wind',
         value: Math.round(data.wind_speed),
         unit: 'km/h',
-    },
-    {
-        name: 'air pressure',
-        value: data.air_pressure,
-        unit: 'mb',
     },
     {
         name: 'max temp',

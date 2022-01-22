@@ -1,15 +1,19 @@
 $gradient: linear-gradient(135deg, #003EFF 10%, #00FF9B 100%);
 
 .navBar{
-    height: 7vh;
-    padding-left: 2%;
+    width: 100vw;
+    height: 8vh;
     display:flex;
     align-items: center;
     box-shadow: 0 4px 12px 0 rgba(110, 107, 107, 0.7);
-    position: relative;
+    position: absolute;
     z-index: 2;
     background-color: white;
     justify-content: space-between;
+    h2{
+        font-size: 20px;
+        font-weight: 300;
+    }
 }
 
 .navBar-dark{
