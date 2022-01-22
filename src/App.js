@@ -16,9 +16,6 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<HomePage handleToggle={handleToggle} toggle={toggle}/>}/>
-        <Route exact path="/search" element={<SearchPage handleToggle={handleToggle} toggle={toggle}/>}/>
-        <Route exact path="/search/:location" element={<DetailPage handleToggle={handleToggle} toggle={toggle}/>}/>
-        <Route exact path="/forecast/:location" element={<DetailPage handleToggle={handleToggle} toggle={toggle}/>}/>
       </Routes>
     </BrowserRouter>
     

@@ -69,6 +69,12 @@ const HomePage = ({handleToggle, toggle}) => {
         resetForecast();
         setSearching(false);
     }
+
+    const remove = async (location) => {
+        setLocations(locations.filter(l => l.title !== location));
+        console.log(location);
+        // await initForecasts();
+    }
     
     return (
         <Page 
@@ -86,6 +92,7 @@ const HomePage = ({handleToggle, toggle}) => {
                             searchSetting={searchSetting}
                             submitSearch={onSubmit}
                             infoSetting={infoSetting}
+                            remove={remove}
                         />
                     }
                     {isLoading && <Loader />}

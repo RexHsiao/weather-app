@@ -8,7 +8,7 @@ import CurrentDayForecast from '../currentDayForecast';
 import Add from '../add';
 
 
-const Directory = ({toggle, searchSetting, forecasts, submitSearch, infoSetting}) => {
+const Directory = ({toggle, searchSetting, forecasts, submitSearch, infoSetting, remove}) => {
     
     const [newForecasts, setNewForecasts] = useState();
     forecasts.then( value => { setNewForecasts(value)});
@@ -22,6 +22,7 @@ const Directory = ({toggle, searchSetting, forecasts, submitSearch, infoSetting}
                         toggle={toggle}
                         submitSearch={submitSearch}
                         infoSetting={infoSetting}
+                        remove={remove}
                     />
             ))}
             <Card toggle={toggle} searchSetting={searchSetting} infoSetting={infoSetting}>

@@ -9,6 +9,7 @@
     background-color: white;
     box-shadow: 0 4px 12px 0 rgba(39, 39, 39, 0.2);
     color: #444444;
+    position: relative;
     &:first-child {
         margin-left:3%;
     }
@@ -16,6 +17,9 @@
         position:relative;
         top:-5px;
         cursor: pointer;
+        .remover-container{
+            display:flex !important;
+        }
     }
     >div{
         display: flex;

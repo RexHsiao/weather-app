@@ -8,5 +8,8 @@ a {
     display: flex;
     align-items: center;
     overflow-x: scroll;
-    // justify-content: space-between;
+    
+    .remover-container{
+        position: relative;
+    }
 }

@@ -1,0 +1,22 @@
+
+.remover-container {
+    position: relative !important;
+    width: 70px;
+    height: 70px;
+    z-index: 1;
+    top: -38% !important;
+    left: 34%;
+    bottom: -6%;
+    transform: translateX(-50%);
+    display: none !important;
+    .delete-icon {
+        transform: translateY(-50%) scale(2);
+        position: relative;
+        top: 50%;
+        color: #444444;
+    }
+
+    .delete-dark{
+        color: white;
+    }
+}
