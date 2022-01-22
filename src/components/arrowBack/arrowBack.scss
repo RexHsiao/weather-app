@@ -1,0 +1,25 @@
+
+.arrow-back{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius:50%;
+    background-color: #444444;
+    z-index: 1;
+    display: inline;
+    align-items: center;
+    left: -13%;
+    top: 50%;
+    transform: translateY(-50%);
+    &:hover {
+        margin-bottom: 5px;
+        cursor: pointer;
+    }
+    .arrow-back-icon{
+        position: relative;
+        top:50%;left: 50%;
+        transform: translate(-50%, -50%) scale(4.5);
+        
+
+    }
+}

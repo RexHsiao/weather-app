@@ -93,8 +93,12 @@ const UseForecast = () => {
         return await Promise.all(newForecasts);
     }
 
+    const resetForecast = () => {
+        setForecast(null);
+    }
+
     return {
-        isError, isLoading, forecast, submitRequest, submitRequests
+        isError, isLoading, forecast, submitRequest, submitRequests, resetForecast
     }
 };
 

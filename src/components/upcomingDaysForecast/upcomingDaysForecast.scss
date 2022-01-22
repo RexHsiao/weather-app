@@ -1,7 +1,9 @@
 
 .upcoming-box{
-    border: 1px solid #fff;
+    background-color: white;
+    color: black;
     height: 50%;
+    border-radius: 0 0 15px 15px;
     .weekList{
         display: flex;
         justify-content: space-between;

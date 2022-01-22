@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './homePage.scss';
 
@@ -14,11 +14,12 @@ import Directory from '../../components/directory';
 import Loader from '../../components/loader';
 import Error from '../../components/error';
 import Forecast from '../../components/forecast';
+import ArrowBack from '../../components/arrowBack';
 
 import useForecast from '../../hooks/UseForecast';
 
 const HomePage = ({handleToggle, toggle}) => {
-    const { isError, isLoading, forecast, submitRequest, submitRequests } = useForecast();
+    const { isError, isLoading, forecast, submitRequest, submitRequests, resetForecast } = useForecast();
     const [locations, setLocations] = useState(CITIES);
     const [info, setInfo] = useState('TODAY');
     const [isSearching, setSearching] = useState(false);
@@ -28,6 +29,18 @@ const HomePage = ({handleToggle, toggle}) => {
         const initialForecasts = await submitRequests(cities);
         return initialForecasts;
     });
+
+    useEffect(() => {
+        if(isSearching){
+            infoSetting("SEARCH");
+        }
+        if(!isSearching || !forecast){
+            infoSetting("TODAY");
+        }
+        if(forecast){
+            infoSetting(forecast.currentDay.date);
+        }
+    }, [isSearching, forecast]);
 
     const clearForecasts = () => {
         setForecasts(null);
@@ -41,16 +54,21 @@ const HomePage = ({handleToggle, toggle}) => {
     };
 
     const searchSetting = () => {
-        setSearching(!isSearching);
+        setSearching(!isSearching)
     }
 
     const infoSetting = (info) => {
         setInfo(info);
     }
 
-    const onSubmit = (value) => {
+    const onSubmit = async (value) => {
         submitRequest(value);
     };
+
+    const backHome = () => {
+        resetForecast();
+        setSearching(false);
+    }
     
     return (
         <Page 
@@ -67,6 +85,7 @@ const HomePage = ({handleToggle, toggle}) => {
                             forecasts={forecasts}
                             searchSetting={searchSetting}
                             submitSearch={onSubmit}
+                            infoSetting={infoSetting}
                         />
                     }
                     {isLoading && <Loader />}
@@ -76,6 +95,7 @@ const HomePage = ({handleToggle, toggle}) => {
             {isSearching && !forecast &&
                 <DetailBackground toggle={toggle}>
                     <Board toggle={toggle}>
+                        <ArrowBack backHome={backHome}/>
                         {!isLoading && <Form submitSearch={onSubmit} toggle={toggle}/>}
                         {isLoading && <Loader />}
                         {isError && <Error message={isError} />}
@@ -84,7 +104,7 @@ const HomePage = ({handleToggle, toggle}) => {
             }
             {forecast && 
                 <DetailBackground toggle={toggle}>
-                    <Forecast forecast={forecast} />
+                    <Forecast forecast={forecast} backHome={backHome}/>
                 </DetailBackground> 
             }
         </Page>

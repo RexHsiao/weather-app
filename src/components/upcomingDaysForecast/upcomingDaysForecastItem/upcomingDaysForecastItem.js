@@ -5,7 +5,7 @@ const imgUrlBase = 'https://www.metaweather.com/static/';
 
 const UpcomingDaysForecastItem = ({ weekday, temperature, imgUrl, weatherDescription }) => (
     <li className="weekday">
-        <div><span>{weekday}</span></div>
+        <div><span>{weekday.toUpperCase()}</span></div>
         <img src={`${imgUrlBase}img/weather/${imgUrl}.svg`} width="80" alt="" className="mb-2" /> 
         <div><span>{temperature}&deg;</span></div>
         <div><h5>{weatherDescription}</h5></div>
