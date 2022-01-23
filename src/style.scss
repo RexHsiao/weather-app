@@ -9,6 +9,10 @@ $gradient-purple:linear-gradient(to top right, #00057A, #721C87);
 $gradient-lightPurple:linear-gradient(to top right, #FF8B8B, #6676FF);
 $gradient-dark:linear-gradient(#00057A, #721C87);
 
+*{
+    // border: 1px solid #444;
+}
+
 @media (max-height: 380px) and (max-width : 900px){
     .logo-container{
         span{
@@ -44,16 +48,6 @@ $gradient-dark:linear-gradient(#00057A, #721C87);
             display: none;
         }
     }
-    .currentDetails-container{
-        .basicInfo{
-            display: flex-wrap !important;
-        }
-        .detailItem {
-            display: none;
-            p, h5{
-                font-size:12px;
-            }
-        }
-    }
+    
     
 }

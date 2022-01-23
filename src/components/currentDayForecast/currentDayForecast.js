@@ -2,7 +2,7 @@ import React from 'react';
 import './currentDayForecast.scss';
 import Card from '../card';
 
-// import Remover from '../remover';
+import Remover from '../remover';
 
 const CurrentDayForecast = ({
     toggle,
@@ -17,8 +17,8 @@ const CurrentDayForecast = ({
     max_temp,
     min_temp}) => {
     return (<>
-        <Card toggle={toggle} id={location} submitSearch={submitSearch} infoSetting={infoSetting} date={date}>   
-            
+        <Remover remove={remove} toggle={toggle} location={location}/>
+        <Card toggle={toggle} id={location} submitSearch={submitSearch} infoSetting={infoSetting} date={date}>    
             <div><h3>{location}</h3></div>
             <div className="status-img">
                 <img width="200" src={weatherIcon} alt="" />

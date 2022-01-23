@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import './homePage.scss';
 
 import CITIES from './homeData';
-// import {locations} from '../../helpers/getLocations';
 
 import Page from '../../components/page';
 import HomeBackground from '../../components/backgrounds/homeBackground';
@@ -21,14 +20,18 @@ import useForecast from '../../hooks/UseForecast';
 const HomePage = ({handleToggle, toggle}) => {
     const { isError, isLoading, forecast, submitRequest, submitRequests, resetForecast } = useForecast();
     const [locations, setLocations] = useState(CITIES);
+    const [cities, setCities] = useState([]);
+    const [addCitiesForecasts, setAddCitiesForecasts] = useState([]);
+    const initForecasts = async () => {
+        const newCities = [];
+        locations.map(location => newCities.push(location.title));
+        setCities(newCities);
+        const initialForecasts = await submitRequests(newCities);
+        return initialForecasts;
+    };
     const [info, setInfo] = useState('TODAY');
     const [isSearching, setSearching] = useState(false);
-    const [forecasts, setForecasts] = useState( async () => {
-        const cities = [];
-        locations.map(location => cities.push(location.title));
-        const initialForecasts = await submitRequests(cities);
-        return initialForecasts;
-    });
+    const [forecasts, setForecasts] = useState(initForecasts);
 
     useEffect(() => {
         if(isSearching){
@@ -39,18 +42,18 @@ const HomePage = ({handleToggle, toggle}) => {
         }
         if(forecast){
             infoSetting(forecast.currentDay.date);
+            if(!checkCities(forecast.currentDay.location)){
+                const newCity = forecast;
+                addNewCityForecast(newCity);
+            }
         }
     }, [isSearching, forecast]);
 
-    const clearForecasts = () => {
-        setForecasts(null);
-    };
 
-    const initForecasts = async () => {
-        const cities = [];
-        locations.map(location => cities.push(location.title));
-        const initialForecasts = await submitRequests(cities);
-        setForecasts(initialForecasts);
+    const addNewCityForecast = async (city) => {
+        const newCities = addCitiesForecasts;
+        newCities.push(city);
+        setAddCitiesForecasts(newCities);
     };
 
     const searchSetting = () => {
@@ -70,10 +73,21 @@ const HomePage = ({handleToggle, toggle}) => {
         setSearching(false);
     }
 
+    const checkCities = (city) => {
+        const addCities = [];
+        setForecasts(forecasts.then(value => value.filter(l => addCities.push(l.currentDay.location))));
+        addCitiesForecasts.map(forecast => addCities.push(forecast.currentDay.location));
+        
+        if(cities.includes(city) || addCities.includes(city)){
+            return true
+        }
+        return false;
+    }
+
     const remove = async (location) => {
-        setLocations(locations.filter(l => l.title !== location));
-        console.log(location);
-        // await initForecasts();
+        setAddCitiesForecasts(addCitiesForecasts.filter(l => l.currentDay.location !== location));
+        setForecasts(forecasts.then(value => value.filter(l => l.currentDay.location !== location)));
+        setCities(cities.filter(l => l !== location));
     }
     
     return (
@@ -84,11 +98,12 @@ const HomePage = ({handleToggle, toggle}) => {
         >   
             {(!forecast && !isSearching) && 
                 <HomeBackground toggle={toggle}>
-                    {!isLoading && 
+                    {(!isLoading) &&
                         <Directory 
                             toggle={toggle}
                             locations={locations} 
                             forecasts={forecasts}
+                            addCitiesForecasts={addCitiesForecasts}
                             searchSetting={searchSetting}
                             submitSearch={onSubmit}
                             infoSetting={infoSetting}

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 
 import HomePage from '../src/pages/homePage';
-import SearchPage from '../src/pages/searchPage';
-import DetailPage from '../src/pages/detailPage';
 // import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 

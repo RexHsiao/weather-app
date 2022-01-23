@@ -12,10 +12,17 @@
     background-image: linear-gradient(to top right, rgba(0, 255, 155, 0.4), rgba(0, 62, 255, 0.4));
     display: flex;
     justify-content:center;
-    // align-items:center;
     position: relative;
+    top: 30%;
+    transform: translateY(-50%);
 }
 
 .board-dark {
     background-image: linear-gradient(to top right, rgba(0, 5, 122, 0.5), rgba(114, 28, 135, 0.5));
+}
+
+@media (max-width : 767px) and (max-height : 900px){
+    .board{
+        top: 43%;
+    }
 }

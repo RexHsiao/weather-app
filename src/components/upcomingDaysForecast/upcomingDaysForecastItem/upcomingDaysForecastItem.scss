@@ -7,15 +7,39 @@
     flex-direction: row;
     color: #444444;
     text-align: center;
+    width: 100px;
     >div{
         margin: 8%;
         span{
             font-size: 25px;
         }
         h5{
-            width: 130px;
+            width: 100%;
             font-size: 20px;
             font-weight: 400;
+        }
+    }
+}
+
+@media (max-width : 1000px){
+    .weekday{
+        .status-img{
+            img{
+                width:40px;
+                padding: 0;
+            }
+        }
+        >div{
+            width:45px;
+            span{
+                font-size: 12px;
+            }
+            h5{
+                text-align: center;
+                width: 100%;
+                font-size: 12px;
+                font-weight: 400;
+            }
         }
     }
 }

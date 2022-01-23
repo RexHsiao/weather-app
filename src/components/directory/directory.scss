@@ -3,14 +3,39 @@ a {
     color:none;
 }
 .directory {
-    height: 100%;
+    height: 100vh;
     width:100%;
+    padding: 0;
     display: flex;
     align-items: center;
     overflow-x: scroll;
-    justify-content:space-between;
     padding: 2.5%;
-    .remover-container{
+    padding-left: 5%;
+    
+    .newCitiesCard{
         position: relative;
+
+        &:hover{
+            .remover-container{
+                display: block;
+            }
+        }
+        .remover-container {
+            z-index: 9999;
+            position: absolute;
+            left: 335px;
+            top:-35px;
+            display:none;
+            &:hover{
+                top:-40px;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@media (max-width : 767px) {
+    .directory {
+        padding-left: 3.5%;
     }
 }

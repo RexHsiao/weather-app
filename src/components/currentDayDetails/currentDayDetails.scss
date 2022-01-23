@@ -62,7 +62,7 @@
         justify-content: space-between;
         padding-left: 6%;padding-right: 6%;
         position: relative;
-        top:10%;
+        top:12%;
     }
 }
 
@@ -73,3 +73,31 @@
     75%  {left:5px; top:0px;}
     100% {left:0px; top:5px;}
   }
+
+@media (max-width : 767px){
+    .currentDetails-container{
+        .basicInfo{
+            top: 15%;
+            .weatherInfo{
+                .weatherStatus {
+                    margin-left:-1%;
+                }
+            }
+            .location{
+                position:absolute;
+                top: -12%;
+                left: 50%;
+                transform: translateX(-50%);
+                span{
+                    font-size: 25px;
+                    font-weight: 300;
+                    letter-spacing: 2px;
+                }
+                .underline{
+                    display: none;
+                }
+            }
+        }
+    }
+    
+}
